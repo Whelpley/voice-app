@@ -67,9 +67,9 @@ ajaxRequest.onload = function() {
       soundSource.buffer = concertHallBuffer;
     }, function(e){"Error with decoding audio data" + e.err});
 
-  //soundSource.connect(audioCtx.destination);
-  //soundSource.loop = true;
-  //soundSource.start();
+  soundSource.connect(audioCtx.destination);
+  soundSource.loop = true;
+  soundSource.start();
 }
 
 ajaxRequest.send();
@@ -229,6 +229,7 @@ function voiceChange() {
     distortion.curve = makeDistortionCurve(400);
   } else if(voiceSetting == "convolver") {
     // does SOMETHING... - WHY? does not look related to voice input
+    // this appears to be just another sound file laid on top
     convolver.buffer = concertHallBuffer;
   } else if(voiceSetting == "biquad") {
     // does nothing - WHY?      
