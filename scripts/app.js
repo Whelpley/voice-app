@@ -223,11 +223,15 @@ function voiceChange() {
   var voiceSetting = voiceSelect.value;
   console.log(voiceSetting);
 
+//   none of these work right
   if(voiceSetting == "distortion") {
+    // does nothing - WHY?
     distortion.curve = makeDistortionCurve(400);
   } else if(voiceSetting == "convolver") {
+    // does SOMETHING... - WHY? does not look related to voice input
     convolver.buffer = concertHallBuffer;
   } else if(voiceSetting == "biquad") {
+    // does nothing - WHY?      
     biquadFilter.type = "lowshelf";
     biquadFilter.frequency.value = 1000;
     biquadFilter.gain.value = 25;
