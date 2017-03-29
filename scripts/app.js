@@ -33,6 +33,7 @@ var convolver = audioCtx.createConvolver();
 // distortion curve for the waveshaper, thanks to Kevin Ennis
 // http://stackoverflow.com/questions/22312841/waveshaper-node-in-webaudio-how-to-emulate-distortion
 
+// I do not yet understand this
 function makeDistortionCurve(amount) {
   var k = typeof amount === 'number' ? amount : 50,
     n_samples = 44100,
@@ -56,7 +57,6 @@ ajaxRequest = new XMLHttpRequest();
 ajaxRequest.open('GET', 'https://mdn.github.io/voice-change-o-matic/audio/concert-crowd.ogg', true);
 
 ajaxRequest.responseType = 'arraybuffer';
-
 
 ajaxRequest.onload = function() {
   var audioData = ajaxRequest.response;
@@ -98,6 +98,7 @@ if (navigator.getUserMedia) {
       },
 
       // Success callback
+      // chains all nodes togther in one line
       function(stream) {
          source = audioCtx.createMediaStreamSource(stream);
          source.connect(analyser);
@@ -228,14 +229,14 @@ function voiceChange() {
     // does nothing - WHY?
     distortion.curve = makeDistortionCurve(400);
   } else if(voiceSetting == "convolver") {
-    // does SOMETHING... - WHY? does not look related to voice input
+    // does SOMETHING... - WHY? 
     // this appears to be just another sound file laid on top
-    convolver.buffer = concertHallBuffer;
+    // convolver.buffer = concertHallBuffer;
   } else if(voiceSetting == "biquad") {
     // does nothing - WHY?      
     biquadFilter.type = "lowshelf";
     biquadFilter.frequency.value = 1000;
-    biquadFilter.gain.value = 25;
+    biquadFilter.gain.value = 100;
   } else if(voiceSetting == "off") {
     console.log("Voice settings turned off");
   }
@@ -261,7 +262,7 @@ function voiceMute() {
     mute.id = "activated";
     mute.innerHTML = "Unmute";
   } else {
-    gainNode.gain.value = 1;
+    gainNode.gain.value = 10;
     mute.id = "";    
     mute.innerHTML = "Mute";
   }

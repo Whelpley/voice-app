@@ -8,7 +8,7 @@ Launching off from the [Voice-Change-O-Matic](https://github.com/mdn/voice-chang
 
 ### Short-term
 
-* Get original app into working state. (The Voice-Change-O-Matic does not return the changed microphone input as promised)
+* Get original app into working state. (The Voice-Change-O-Matic does not return the changed microphone input as promised, may abandon this route & build off a different one if I can not get it working.)
 * Convert to an Angular app
 * Capture and save recordings from microphone 
 
